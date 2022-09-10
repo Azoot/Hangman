@@ -18,6 +18,7 @@ class Hangman():
         self.lives = 10
         self.used = []
         self.a_set = set()
+        self.printed_word = self.__word_to_print()
 
     def __players_lives_graf(self):
         print("\u2764  " * self.lives)
@@ -33,6 +34,7 @@ class Hangman():
             _l = _l.lower()
             if _l == "quit":
                 self.lives = 0
+                self.__players_lives_graf()
                 break
 
             if _l in self.letters and _l not in self.used:
@@ -98,9 +100,15 @@ class Hangman():
 
     def __choose_random_word(self):
         self.word = WORDSy
+        self.characters_count = len(self.word)
         self.letters = copy(self.word)
-        self.a_set = set(self.word)
+        self.letters = self.letters.lower().replace(" ", "")
+        self.a_set = set(self.letters)
 
+    def __word_to_print(self):
+        i = 0
+        while i < self.characters_count(self):
+            print(self.characters_count[i])
 
 game = Hangman()
 
