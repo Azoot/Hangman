@@ -7,6 +7,7 @@ def clear_screen(): return os.system("cls")
 WORDS = ['worm', 'nothing', 'something', 'keyboard', 'lir', 'dry', 'trr', 'see', 'pneumonoultramicroscopicsilicovolcanoconiosis', 'antidisestablishmentarianism', 'tree',]
 WORDSy = 'Jan Kowalski'
 
+
 class Hangman():
     def __init__(self):
         self.word = ""
@@ -33,7 +34,7 @@ class Hangman():
                 self.lives = 0
                 break
 
-            
+
             if _l in self.letters and _l not in self.used:
                 self.letters = list(filter(_l.__ne__, self.letters)) 
                 self.__used_letters(_l)
@@ -104,7 +105,7 @@ class Hangman():
 
     def __choose_random_word(self): 
         self.word = choice(WORDS)
-        self.letters = copy(self.word)
+        self.letters = copy(self.word.lower)
         self.a_set = set(self.word)
 
 
