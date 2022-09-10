@@ -7,6 +7,7 @@ def clear_screen(): return os.system("cls")
 WORDS = ['worm', 'nothing', 'something', 'keyboard', 'lir', 'dry', 'trr', 'see', 'pneumonoultramicroscopicsilicovolcanoconiosis', 'antidisestablishmentarianism', 'tree',]
 WORDSy = 'Jan Kowalski'
 
+
 class Hangman():
     def __init__(self):
         self.word = ""
