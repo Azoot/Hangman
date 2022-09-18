@@ -1,0 +1,9 @@
+Same | Notsame | Yes
+Diffrent | Same | No
+Nothingnes | Full | Fine
+Home | Homeless | Ok
+Damn | Holyshit | Nope
+Buzz | Silence | Yesh
+Anarchy | Peace | Uhuh
+Blue | Green | Okay
+Yellow | Purple | Nay
