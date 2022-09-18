@@ -18,7 +18,7 @@ class Hangman():
         self.lives = 10
         self.used = []
         self.a_set = set()
-        self.printed_word = self.__word_to_print()
+
 
     def __players_lives_graf(self):
         print("\u2764  " * self.lives)
@@ -105,10 +105,7 @@ class Hangman():
         self.letters = self.letters.lower().replace(" ", "")
         self.a_set = set(self.letters)
 
-    def __word_to_print(self):
-        i = 0
-        while i < self.characters_count(self):
-            print(self.characters_count[i])
+
 
 game = Hangman()
 
