@@ -6,11 +6,10 @@ def clear_screen(): return os.system("cls")
 
 # print(random.choice(open("WordsForGames.txt").readline().split())) <--- uproszczona opcja wyboru slowa z losowej lini
 
-lives = 10
 quit = "Hah...female off a cat. You call yourself Human!"
 used_letters = ''
 letters_in_word = ''
-
+lives = 10
 
 def random_word():
     with open("WordsForGames.txt", 'r')as word_file:
@@ -22,6 +21,7 @@ def random_word():
         print("hiden: ", hiden_word)
         clear_screen()
         print(f"\n\nYou can start guessing")
+        del lines, words
     return hiden_word
 
 def front_screen_menu():
@@ -29,28 +29,30 @@ def front_screen_menu():
     print("██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗нⷩ\n██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║n\n███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║g\n██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║mͫ\n██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║aͣ\n╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝n")
 
 def choose_difficulty():
-    difficulty = input("Choose young padawan: \n1. Eazy. \n2. Medium\n3. Hard \nSo hows it gonna be: ")
-    if difficulty == "1":
-        lives = 10
-    elif difficulty == "2":
-        lives = 6
-    elif difficulty == "3":
-        lives = 4
-    elif difficulty == "quit":
-        print(quit)
-        exit(0)
-
-def players_lives_graf():
-    print("\u2764  " * lives)
-    return lives
+        difficulty = input("Choose young padawan: \n1. Eazy. \n2. Medium\n3. Hard \nSo hows it gonna be: ")
+        if difficulty == "1":
+            lives = 10
+            return lives
+        elif difficulty == "2":
+            lives = 6
+            return lives
+        elif difficulty == "3":
+            lives = 4
+            return lives
+        elif difficulty == "quit":
+            print(quit)
+            exit(0)
+            
 
 def get_letter(guessed_letter):
     while True:
         letter = input("Gimmee lettaaaa: ").lower()
+        clear_screen()
         if letter == 'quit':
             print(quit)
             break
         elif len(letter) != 1:
+            clear_screen()
             print('Please, please... a LETTER! SINGLE!')
         elif letter in guessed_letter:
             print("You have already guessed that letter. Choose again")
@@ -59,7 +61,9 @@ def get_letter(guessed_letter):
         else:
             return letter
 
-def display(used_letters, letters_in_word, hiden_word):
+
+def display(used_letters, letters_in_word, hiden_word, lives):
+    print("\u2764  " * lives)
     underscores = '_' * len(hiden_word)    
     if used_letters or letters_in_word:    
         print('Used letters: ', end='')
@@ -77,33 +81,38 @@ def display(used_letters, letters_in_word, hiden_word):
 
 def play():
     front_screen_menu()
-    choose_difficulty()
+    lives = int(choose_difficulty())
     hiden_word = random_word()
     used_letters = ''
     letters_in_word = ''
-    gused_letters = ''
     while True:
-        display(used_letters, letters_in_word, hiden_word)
+        display(used_letters, letters_in_word, hiden_word, lives)
             # Ask player for letter (input)
         letter = get_letter(used_letters + letters_in_word)
         clear_screen()
         if letter in hiden_word:
-            letters_in_word = letters_in_word + letter
+            letters_in_word += letter
 
                 # Check if player won.
+            foundAllLetters = True
             for i in range(len(hiden_word)):
                 if hiden_word[i] not in letters_in_word:
+                    foundAllLetters = False
                     break
-            if len(hiden_word) == len(gused_letters):
+
+            if foundAllLetters:
                 print(f'Yeah... thats the thing youre looking for: {hiden_word}')
 
-            else:
-                gused_letters = gused_letters + letter
+        elif lives > 1:
+            lives -= 1
+        else:
+            print("You Loose!")
+            break
+
 
         used_letters = used_letters + letter
             # Check if player has guessed too many times and lost.
-        if len(gused_letters) == len(word_to_print) - 1:
-            display(used_letters, letters_in_word, hiden_word)
+
 
 
 word_to_print = list(random_word().capitalize())
