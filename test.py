@@ -15,10 +15,7 @@ def random_word():
     with open("WordsForGames.txt", 'r')as word_file:
         lines = word_file.readlines()
         words = random.choice(lines).split("|")
-        random_word = random.choice(words).strip().lower()
-        hiden_word = random_word
-        print("random: ", random_word)
-        print("hiden: ", hiden_word)
+        hiden_word = random.choice(words).strip().lower()
         clear_screen()
         print(f"\n\nYou can start guessing")
         del lines, words
@@ -28,7 +25,7 @@ def front_screen_menu():
     print("нⷩaͣngmͫaͣn" * 9)
     print("██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗нⷩ\n██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║n\n███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║g\n██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║mͫ\n██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║aͣ\n╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝n")
 
-def choose_difficulty():
+def choose_difficulty() -> int:
         difficulty = input("Choose young padawan: \n1. Eazy. \n2. Medium\n3. Hard \nSo hows it gonna be: ")
         if difficulty == "1":
             lives = 10
@@ -62,7 +59,7 @@ def get_letter(guessed_letter):
             return letter
 
 
-def display(used_letters, letters_in_word, hiden_word, lives):
+def display(used_letters, letters_in_word, hiden_word, lives, word_to_print):
     print("\u2764  " * lives)
     underscores = '_' * len(hiden_word)    
     if used_letters or letters_in_word:    
@@ -74,7 +71,7 @@ def display(used_letters, letters_in_word, hiden_word, lives):
             # Filing up correctly guessed letters.
         for i in range(len(hiden_word)):
             if hiden_word[i] in letters_in_word:
-                underscores = underscores[:i] + hiden_word[i] + underscores[i+1:]
+                underscores = underscores[:i] + word_to_print[i] + underscores[i+1:]
         for letter in underscores:
             print(letter, end="")
         print()
@@ -83,10 +80,11 @@ def play():
     front_screen_menu()
     lives = int(choose_difficulty())
     hiden_word = random_word()
+    word_to_print = hiden_word.capitalize()
     used_letters = ''
     letters_in_word = ''
     while True:
-        display(used_letters, letters_in_word, hiden_word, lives)
+        display(used_letters, letters_in_word, hiden_word, lives, word_to_print)
             # Ask player for letter (input)
         letter = get_letter(used_letters + letters_in_word)
         clear_screen()
@@ -102,6 +100,7 @@ def play():
 
             if foundAllLetters:
                 print(f'Yeah... thats the thing youre looking for: {hiden_word}')
+                break
 
         elif lives > 1:
             lives -= 1
@@ -115,6 +114,6 @@ def play():
 
 
 
-word_to_print = list(random_word().capitalize())
+
 clear_screen()
 play()
