@@ -99,7 +99,7 @@ class Hangman():
         return len(self.letters)
 
     def __choose_random_word(self):
-        self.word = WORDSy
+        self.word = WORDS
         self.characters_count = len(self.word)
         self.letters = copy(self.word)
         self.letters = self.letters.lower().replace(" ", "")
