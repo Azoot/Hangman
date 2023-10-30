@@ -39,9 +39,9 @@ If you want to quit the game, type "quit" and press Enter.
 After the game ends, you will be notified whether you won or lost.
 
 ## Customization
--You can customize the list of words in the WORDS variable at the beginning of the script. This variable is used for testing short words.
+- You can customize the list of words in the WORDS variable at the beginning of the script. This variable is used for testing short words.
 
--You can change the initial secret word by modifying the WORDSy variable, which is used to test words with space separators.
+- You can change the initial secret word by modifying the WORDSy variable, which is used to test words with space separators.
 
 
 ## Additional Scripts
