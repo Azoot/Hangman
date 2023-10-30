@@ -28,15 +28,15 @@ The Hangman Game is a simple Python script that allows you to play the classic w
    python hangman.py
 
 
-The game will begin, and you will see a series of underscores representing the letters of the secret word. You have 10 lives.
+- 1. The game will begin, and you will see a series of underscores representing the letters of the secret word. You have 10 lives.
 
-Guess a letter by entering it and pressing Enter. If the letter is in the word, it will be revealed; otherwise, you will lose a life.
+- 2. Guess a letter by entering it and pressing Enter. If the letter is in the word, it will be revealed; otherwise, you will lose a life.
 
-Continue guessing letters until you either complete the word or run out of lives.
+- 3. Continue guessing letters until you either complete the word or run out of lives.
 
-If you want to quit the game, type "quit" and press Enter.
+- 4. If you want to quit the game, type "quit" and press Enter.
 
-After the game ends, you will be notified whether you won or lost.
+- 5. After the game ends, you will be notified whether you won or lost.
 
 ## Customization
 - You can customize the list of words in the WORDS variable at the beginning of the script. This variable is used for testing short words.
