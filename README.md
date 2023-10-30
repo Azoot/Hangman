@@ -45,9 +45,9 @@ After the game ends, you will be notified whether you won or lost.
 
 
 ## Additional Scripts
-test.py: This script provides [Difrent version of the same game but with difrent way to get words for the game.].
+- test.py: This script serves as a test or development variant. It selects a random word from a file and displays missed letters, correct letters, and a Hangman figure.
 
-testing.py: This script offers [Also difrent version off the same game].
+- testing.py: Similar to test.py, this script is another variant that uses a predefined list of words and displays a Hangman figure based on incorrect guesses.
 
 
 ## Variants and Test Scripts
