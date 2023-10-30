@@ -39,12 +39,21 @@ If you want to quit the game, type "quit" and press Enter.
 After the game ends, you will be notified whether you won or lost.
 
 ## Customization
-You can customize the list of words in the WORDS variable at the beginning of the script.
+-You can customize the list of words in the WORDS variable at the beginning of the script. This variable is used for testing short words.
 
-You can change the initial secret word by modifying the WORDSy variable.
+-You can change the initial secret word by modifying the WORDSy variable, which is used to test words with space separators.
 
 
 ## Additional Scripts
 test.py: This script provides [Difrent version of the same game but with difrent way to get words for the game.].
 
 testing.py: This script offers [Also difrent version off the same game].
+
+
+## Variants and Test Scripts
+
+In addition to the main Hangman game, there are two additional code variants and test scripts that demonstrate different approaches to creating a Hangman game:
+
+- test.py: This script serves as a test or development variant. It selects a random word from a file and displays missed letters, correct letters, and a Hangman figure.
+
+- testing.py: Similar to test.py, this script is another variant that uses a predefined list of words and displays a Hangman figure based on incorrect guesses.
