@@ -42,3 +42,9 @@ After the game ends, you will be notified whether you won or lost.
 You can customize the list of words in the WORDS variable at the beginning of the script.
 
 You can change the initial secret word by modifying the WORDSy variable.
+
+
+## Additional Scripts
+test.py: This script provides [Difrent version of the same game but with difrent way to get words for the game.].
+
+testing.py: This script offers [Also difrent version off the same game].
